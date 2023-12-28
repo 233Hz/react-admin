@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ant-menu {
+  background-color: transparent !important;
+}
+
+.dark .ant-menu .ant-menu-item,
+.dark .ant-menu .ant-menu-submenu-title {
+  color: #ffffff !important;
+}
+
+.ant-menu .ant-menu-item:hover {
+  color: #fec7d7 !important;
+  background-color: #fec7d733 !important;
+}
+
+.ant-menu .ant-menu-item-selected {
+  color: #fec7d7 !important;
+  background-color: #fec7d733 !important;
+}
+
+.ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #fec7d7 !important;
+  background-color: #fec7d733 !important;
+}
+
+.dark .ant-menu .ant-menu-item:hover {
+  color: #f9bc60 !important;
+  background-color: #f9bc6033 !important;
+}
+
+.dark .ant-menu .ant-menu-item-selected {
+  color: #f9bc60 !important;
+  background-color: #f9bc6033 !important;
+}
+
+.dark .ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #f9bc60 !important;
+  background-color: #f9bc6033 !important;
+}

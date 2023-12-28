@@ -1,0 +1,8 @@
+.tab-moving {
+  opacity: 0;
+}
+
+.tab-active {
+  background-color: #ff6f9333 !important;
+  color: #ff6f93 !important;
+}

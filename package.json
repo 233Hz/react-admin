@@ -1,0 +1,37 @@
+{
+  "name": "react-admin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "antd": "^5.12.1",
+    "classnames": "^2.3.2",
+    "i18next": "^23.7.11",
+    "i18next-http-backend": "^2.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.0.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.1",
+    "vite-plugin-windicss": "^1.9.2",
+    "windicss": "^3.5.6"
+  }
+}
