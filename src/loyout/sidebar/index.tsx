@@ -5,7 +5,7 @@ import { useGlobalStore } from '@/store/modules/global';
 import { Drawer } from 'antd';
 import SidebarMenu from './sidebar-menu';
 
-export default function Sidebar() {
+const Sidebar: React.FC = () => {
   const isMobile = useIsMobile();
   const { collapsed, setCollapsed } = useGlobalStore();
 
@@ -38,4 +38,6 @@ export default function Sidebar() {
       </div>
     );
   }
-}
+};
+
+export default Sidebar;

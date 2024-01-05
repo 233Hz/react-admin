@@ -10,7 +10,7 @@ import { useGlobalStore } from '@/store/modules/global';
 import Avatar from './avatar';
 import { useTranslation } from 'react-i18next';
 
-export default function Header() {
+const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { collapsed, setCollapsed, darkMode, setDarkMode } = useGlobalStore();
   const items: MenuProps['items'] = [
@@ -57,4 +57,6 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
+
+export default Header;

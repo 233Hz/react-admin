@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import { defaultSetting } from '../default-setting';
 import { useGlobalStore } from '@/store/modules/global';
 import useIsMobile from '@/hoooks/useMobile';
 import Tab from '../tab';
 
-export default function Content() {
+const Content: React.FC = () => {
   const isMobile = useIsMobile();
   const { collapsed } = useGlobalStore();
   const [tabs] = useState(Array.from({ length: 20 }, (_, i) => ({ key: i, name: `tab${i}` })));
@@ -18,7 +19,13 @@ export default function Content() {
       }}
       className="h-[calc(100vh-60px)] fixed right-0 bottom-0 bg-[#f2f2f2] dark:bg-[#242629]">
       <Tab tabs={tabs} />
-      <div className="h-[calc(100%-40px)]"></div>
+      <div className="h-[calc(100%-40px)]">
+        <Suspense fallback={<div>loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </div>
     </div>
   );
-}
+};
+
+export default Content;

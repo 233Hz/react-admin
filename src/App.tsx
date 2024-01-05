@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import BasicLayout from './loyout';
 import { useGlobalStore } from './store/modules/global';
 import { ConfigProvider } from 'antd';
+import Router from './router';
 
 function App() {
   const { darkMode } = useGlobalStore();
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <ConfigProvider>
-      <BasicLayout />
+      <Router />
     </ConfigProvider>
   );
 }

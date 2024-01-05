@@ -2,7 +2,7 @@ import Header from './header';
 import Sidebar from './sidebar';
 import Content from './content';
 
-export default function BasicLayout() {
+const BasicLayout: React.FC = () => {
   return (
     <div>
       <Header />
@@ -10,4 +10,6 @@ export default function BasicLayout() {
       <Content />
     </div>
   );
-}
+};
+
+export default BasicLayout;
