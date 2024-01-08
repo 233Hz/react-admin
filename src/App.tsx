@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useGlobalStore } from './store/modules/global';
 import { ConfigProvider } from 'antd';
 import Router from './router';
@@ -17,7 +17,9 @@ function App() {
 
   return (
     <ConfigProvider>
-      <Router />
+      <Suspense fallback={<div>loading...</div>}>
+        <Router />
+      </Suspense>
     </ConfigProvider>
   );
 }

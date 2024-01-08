@@ -23,6 +23,10 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: '/login',
+    Component: lazy(() => import('@/pages/login/index.tsx')),
+  },
+  {
     path: '*',
     Component: NotFound,
   },
