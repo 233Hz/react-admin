@@ -1,5 +1,7 @@
-import React, { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { App } from 'antd';
+import { antdUtils } from '@/utils/antd';
 import BasicLayout from '@/loyout';
 import NotFound from '@/pages/error/not-found';
 
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
   },
 ]);
 
-const Router: React.FC = () => <RouterProvider router={router} />;
+const Router: React.FC = () => {
+  const { message, notification, modal } = App.useApp();
+  useEffect(() => {
+    antdUtils.setMessage(message);
+    antdUtils.setNotification(notification);
+    antdUtils.setModal(modal);
+  }, [message, notification, modal]);
+  return <RouterProvider router={router} />;
+};
 
 export default Router;

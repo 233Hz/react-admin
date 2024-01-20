@@ -1,9 +1,9 @@
 import { Suspense, useEffect } from 'react';
-import { useGlobalStore } from './store/modules/global';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, App as AntdApp } from 'antd';
+import { useGlobalStore } from './store/global';
 import Router from './router';
 
-function App() {
+const App = () => {
   const { darkMode } = useGlobalStore();
   useEffect(() => {
     if (darkMode) {
@@ -18,10 +18,12 @@ function App() {
   return (
     <ConfigProvider>
       <Suspense fallback={<div>loading...</div>}>
-        <Router />
+        <AntdApp>
+          <Router />
+        </AntdApp>
       </Suspense>
     </ConfigProvider>
   );
-}
+};
 
 export default App;

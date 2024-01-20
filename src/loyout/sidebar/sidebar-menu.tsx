@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import { ContainerOutlined, PieChartOutlined } from '@ant-design/icons';
-import { useGlobalStore } from '@/store/modules/global';
+import { useGlobalStore } from '@/store/global';
 
 const items: MenuProps['items'] = [
   {

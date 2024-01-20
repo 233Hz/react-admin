@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import useIsMobile from '@/hoooks/useMobile';
+import useIsMobile from '@/hoooks/use-mobile';
 import { defaultSetting } from '../default-setting';
-import { useGlobalStore } from '@/store/modules/global';
+import { useGlobalStore } from '@/store/global';
 import { Drawer } from 'antd';
 import SidebarMenu from './sidebar-menu';
 
@@ -25,8 +25,9 @@ const Sidebar: React.FC = () => {
         width={defaultSetting.sidebarWidth}
         closable={false}
         getContainer={false}
+        styles={{ body: { padding: '0px' } }}
         onClose={() => setCollapsed(true)}>
-        侧边栏
+        <SidebarMenu />
       </Drawer>
     );
   } else {

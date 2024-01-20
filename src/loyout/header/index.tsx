@@ -6,7 +6,7 @@ import { IconMoon } from '@/assets/icons/moon';
 import { IconTaiyang } from '@/assets/icons/taiyang';
 import { defaultSetting } from '../default-setting';
 import { IconShengdanye } from '@/assets/icons/shengdanye';
-import { useGlobalStore } from '@/store/modules/global';
+import { useGlobalStore } from '@/store/global';
 import Avatar from './avatar';
 import { useTranslation } from 'react-i18next';
 

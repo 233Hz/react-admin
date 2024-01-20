@@ -1,8 +1,8 @@
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { defaultSetting } from '../default-setting';
-import { useGlobalStore } from '@/store/modules/global';
-import useIsMobile from '@/hoooks/useMobile';
+import { useGlobalStore } from '@/store/global';
+import useIsMobile from '@/hoooks/use-mobile';
 import Tab from '../tab';
 
 const Content: React.FC = () => {
