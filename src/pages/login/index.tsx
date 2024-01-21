@@ -18,7 +18,7 @@ import LoginSwitchPanelBg from '@/assets/images/login/login-switch-panel-bg.jpg'
 import RegisterSwitchPanelBg from '@/assets/images/login/register-switch-panel-bg.jpg';
 import { useRequest } from '@/hoooks/use-request';
 import loginApi, { type LoginDTO } from './api';
-import { useAuthStore } from '@/store/auth';
+import { useUserStore } from '@/store/user';
 import { JSEncrypt } from 'jsencrypt';
 
 const iconsItem = classNames('mx-4', 'text-[#00000040]', 'hover:text-[#fec7d7]');
@@ -47,7 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ status }) => {
 
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const { setToken, setRefreshToken } = useAuthStore();
+  const { setTokenInfo } = useUserStore();
 
   const onFinish = async (values: LoginDTO) => {
     if (!captcha) return;
@@ -73,9 +73,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ status }) => {
       form.setFieldsValue({ captcha: null });
       return;
     }
-
-    setToken(loginData.token);
-    setRefreshToken(loginData.refreshToken);
+    const { token, refreshToken } = loginData;
+    setTokenInfo({ token, refreshToken });
     navigate('/');
   };
 

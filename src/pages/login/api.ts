@@ -27,6 +27,8 @@ const loginApi = {
   login: (loginDTO: LoginDTO) => request.post<TokenVO>('/auth/login', loginDTO),
   // 获取公钥
   getPublicKey: () => request.get<string>('/auth/publicKey'),
+  // 退出登录
+  logout: () => request.get('/auth/logout'),
 };
 
 export default loginApi;

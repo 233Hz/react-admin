@@ -5,7 +5,7 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from 'axios';
-import { useAuthStore } from '@/store/auth';
+import { useUserStore } from '@/store/user';
 import { antdUtils } from './antd';
 import { TokenVO } from '@/pages/login/api';
 
@@ -46,7 +46,7 @@ class Request {
       });
     }
 
-    const { token } = useAuthStore.getState();
+    const { token } = useUserStore.getState();
     // 为每个接口注入token
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -84,7 +84,7 @@ class Request {
 
   private refreshToken = async () => {
     this.isRefreshToken = true;
-    const { refreshToken, setToken } = useAuthStore();
+    const { refreshToken, setToken } = useUserStore();
     if (!refreshToken) {
       // 重定向到登入
       return;

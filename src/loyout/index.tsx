@@ -2,11 +2,11 @@ import Header from './header';
 import Sidebar from './sidebar';
 import Content from './content';
 import { useEffect } from 'react';
-import { useAuthStore } from '@/store/auth';
+import { useUserStore } from '@/store/user';
 import { useNavigate } from 'react-router-dom';
 
 const BasicLayout: React.FC = () => {
-  const { token } = useAuthStore();
+  const { token } = useUserStore();
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) navigate('/login');

@@ -1,6 +1,6 @@
 import { Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
+import { ExclamationCircleFilled, LoginOutlined, MenuOutlined } from '@ant-design/icons';
 import { IconDuoyuyan } from '@/assets/icons/duoyuyan';
 import { IconMoon } from '@/assets/icons/moon';
 import { IconTaiyang } from '@/assets/icons/taiyang';
@@ -9,10 +9,14 @@ import { IconShengdanye } from '@/assets/icons/shengdanye';
 import { useGlobalStore } from '@/store/global';
 import Avatar from './avatar';
 import { useTranslation } from 'react-i18next';
+import { antdUtils } from '@/utils/antd';
+import loginApi from '@/pages/login/api';
+import { useUserStore } from '@/store/user';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { collapsed, setCollapsed, darkMode, setDarkMode } = useGlobalStore();
+  const { clearInfo } = useUserStore();
   const items: MenuProps['items'] = [
     {
       key: 'zh',
@@ -29,8 +33,21 @@ const Header: React.FC = () => {
       },
     },
   ];
+  const logout = () => {
+    antdUtils.modal?.confirm({
+      title: '是否确认退出登录?',
+      icon: <ExclamationCircleFilled />,
+      okText: '退出登录',
+      cancelText: '取消',
+      async onOk() {
+        const [error] = await loginApi.logout();
+        if (error) antdUtils.message?.error('退出登录失败');
+        clearInfo();
+      },
+    });
+  };
   return (
-    <div className="h-[60px] flex  fixed top-0 left-0 right-0 bg-container primary">
+    <div className="h-[60px] flex fixed top-0 left-0 right-0 bg-container primary">
       <div
         style={{ width: defaultSetting.sidebarWidth }}
         className="<md:hidden flex items-center gap-[4px] px-[10px] cursor-pointer">
@@ -51,6 +68,9 @@ const Header: React.FC = () => {
           </Dropdown>
           <div className="btn-icon" onClick={() => setDarkMode(!darkMode)}>
             {darkMode ? <IconTaiyang /> : <IconMoon />}
+          </div>
+          <div className="btn-icon" onClick={logout}>
+            <LoginOutlined />
           </div>
           <Avatar />
         </div>
