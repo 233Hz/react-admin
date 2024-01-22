@@ -19,7 +19,7 @@ const Content: React.FC = () => {
       }}
       className="h-[calc(100vh-60px)] fixed right-0 bottom-0 bg-[#f2f2f2] dark:bg-[#242629]">
       <Tab tabs={tabs} />
-      <div className="h-[calc(100%-40px)]">
+      <div className="h-[calc(100%-40px)] p-[16px]">
         <Suspense fallback={<div>loading...</div>}>
           <Outlet />
         </Suspense>

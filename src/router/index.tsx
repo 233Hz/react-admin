@@ -22,6 +22,15 @@ const router = createBrowserRouter([
         path: '/my',
         Component: lazy(() => import('@/pages/my/index.tsx')),
       },
+      {
+        path: '/system',
+        children: [
+          {
+            path: '/system/menu',
+            Component: lazy(() => import('@/pages/system/menu/index.tsx')),
+          },
+        ],
+      },
     ],
   },
   {

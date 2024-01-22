@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu } from 'antd';
 import type { MenuProps } from 'antd';
-import { ContainerOutlined, PieChartOutlined } from '@ant-design/icons';
+import { ContainerOutlined, DesktopOutlined, PieChartOutlined } from '@ant-design/icons';
 import { useGlobalStore } from '@/store/global';
 
 const items: MenuProps['items'] = [
@@ -9,6 +9,17 @@ const items: MenuProps['items'] = [
     key: '/index',
     icon: <PieChartOutlined />,
     label: '首页',
+  },
+  {
+    key: '/system',
+    icon: <DesktopOutlined />,
+    label: '首页',
+    children: [
+      {
+        key: '/menu',
+        label: '菜单管理',
+      },
+    ],
   },
   {
     key: '/my',
@@ -22,7 +33,10 @@ const SidebarMenu: React.FC = () => {
   const { pathname } = useLocation();
 
   const { collapsed } = useGlobalStore();
-  const routerMenu: MenuProps['onClick'] = menuItem => navigate(menuItem.key);
+  const routerMenu: MenuProps['onClick'] = menuItem => {
+    const path = menuItem.keyPath.reverse().join('');
+    navigate(path);
+  };
   return (
     <Menu
       className="h-full"
