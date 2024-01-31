@@ -27,14 +27,21 @@ const ExpandLayout: React.FC<Props> = ({
 
   const getItems = () => {
     const renderItems = expand ? items.slice(0, col * expandRow) : [...items];
-    if (items.length < col) {
-      renderItems.push(<Space size="small">{...actions}</Space>);
-    }
-    return renderItems.map((item, index) => (
+    const result = renderItems.map((item, index) => (
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl} {...restColProps} key={index}>
         {item}
       </Col>
     ));
+    if (items.length < col) {
+      result.push(
+        <Col key="actions">
+          <Space size="small" wrap>
+            {...actions}
+          </Space>
+        </Col>
+      );
+    }
+    return result;
   };
   return (
     <>

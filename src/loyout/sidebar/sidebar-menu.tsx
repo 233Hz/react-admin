@@ -13,7 +13,7 @@ const items: MenuProps['items'] = [
   {
     key: '/system',
     icon: <DesktopOutlined />,
-    label: '首页',
+    label: '系统管理',
     children: [
       {
         key: '/menu',
