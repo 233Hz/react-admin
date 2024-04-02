@@ -181,7 +181,7 @@ const switchPanelBtn = classNames(
 const Login: React.FC = () => {
   const [status, setStatus] = useState(true);
   return (
-    <div className="h-[100vh] flex justify-center items-center">
+    <div className="fixed top-1/2 left-1/2 mt-[-250px] ml-[-400px]">
       <div className="w-[800px] h-[500px] relative shadow-2xl rounded-lg overflow-hidden">
         <div
           className="w-[300px] h-full absolute left-0 top-0  transition-all duration-300 ease-in"

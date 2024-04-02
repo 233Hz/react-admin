@@ -17,7 +17,7 @@ import FormModal from './form-modal';
 
 const Menu: React.FC = () => {
   const [query] = Form.useForm<QueryType>();
-  const { loading, data, refresh } = useRequest(menuApi.getMenuTreeApi);
+  const { loading, data, refresh } = useRequest(menuApi.getTreeList);
   const [dataSource, setDataSource] = useState<MenuVO[]>([]);
   const getMenuData = useCallback(
     (query?: QueryType) => {
@@ -32,6 +32,8 @@ const Menu: React.FC = () => {
     },
     [data]
   );
+
+  const [showFormModal, setShowFormModal] = useState(false);
 
   useEffect(() => {
     getMenuData();
@@ -156,7 +158,7 @@ const Menu: React.FC = () => {
               <Button icon={<ReloadOutlined />} onClick={() => refresh()} key="refresh">
                 刷新
               </Button>,
-              <Button icon={<PlusOutlined />} type="primary" onClick={() => refresh()} key="add">
+              <Button icon={<PlusOutlined />} type="primary" onClick={() => setShowFormModal(true)} key="add">
                 添加
               </Button>,
             ]}
@@ -166,7 +168,7 @@ const Menu: React.FC = () => {
       <Card className="mt-[16px]">
         <Table rowKey="id" columns={columns} dataSource={dataSource} loading={loading} />
       </Card>
-      <FormModal type="add" />
+      <FormModal type="add" show={showFormModal} close={() => setShowFormModal(false)} />
     </>
   );
 };

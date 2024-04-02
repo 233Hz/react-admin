@@ -14,7 +14,9 @@ export interface MenuVO {
 }
 
 const menuApi = {
-  getMenuTreeApi: () => request.get<MenuVO[]>('/menu/list/tree'),
+  getTreeList: () => request.get<MenuVO[]>('/menu/tree'),
+  getSelectTree: () => request.get<MenuVO[]>('/menu/selectTree'),
+  saveOrUpdate: (data: MenuVO) => request.post('/menu/saveOrUpdate', data),
 };
 
 export default menuApi;
